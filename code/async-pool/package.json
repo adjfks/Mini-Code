@@ -1,0 +1,16 @@
+{
+  "name": "async-pool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "ex": "node ./example"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
