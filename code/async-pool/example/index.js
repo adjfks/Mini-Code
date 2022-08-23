@@ -9,6 +9,9 @@ const task = (no, delay) => {
     })
   }
 }
+
+const task1 = task(7, 1)
+
 const tasks = [
   task(1, 5),
   task(2, 6),
@@ -17,4 +20,5 @@ const tasks = [
   task(5, 1),
   task(6, 1),
 ]
-const asyncPool = new AsyncPool(4, tasks)
+const asyncPool = new AsyncPool(3, tasks)
+asyncPool.unshiftTask(task1)
