@@ -20,5 +20,9 @@ const tasks = [
   task(5, 1),
   task(6, 1),
 ]
-const asyncPool = new AsyncPool(3, tasks)
-asyncPool.unshiftTask(task1)
+const asyncPool = new AsyncPool(3)
+for (let i = 0; i < tasks.length; i++) {
+  const task = tasks[i]
+  asyncPool.appendTask(task)
+  if (i === 2) asyncPool.unshiftTask(task1)
+}
