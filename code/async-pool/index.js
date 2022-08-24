@@ -1,10 +1,9 @@
 export default class AsyncPool {
-  constructor(limit = 6, tasks = []) {
+  constructor(limit = 6) {
     this.limit = limit
-    this.taskQueue = [].concat(tasks)
+    this.taskQueue = []
     this.executingQueue = []
     this.scheduling = false
-    this.startSchedule()
   }
 
   async startSchedule() {
@@ -20,16 +19,16 @@ export default class AsyncPool {
       this.executingQueue.push(executingTask)
       console.log('加入一个执行任务')
     }
+    this.scheduling = false
     if (this.executingQueue.length) {
       Promise.all(this.executingQueue).then(() => {
         console.log('全部执行完毕')
-        this.scheduling = false
       })
     }
   }
 
   resolveTask(task) {
-    const executingTask = Promise.resolve(task()).then(() =>
+    const executingTask = Promise.resolve(task()).finally(() =>
       this.executingQueue.splice(this.executingQueue.indexOf(executingTask), 1)
     )
     return executingTask
