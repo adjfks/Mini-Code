@@ -7,7 +7,9 @@
     "src": "src"
   },
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "lc": "node ./script.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

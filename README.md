@@ -11,6 +11,13 @@ npm install
 npm run ex
 ```
 
+## leetcode
+在根目录快速运行leetcode对应题目的单元测试
+使用`npm run lc + 题号`的方式即可运行指定题号题目的单元测试
+```shell
+npm run lc 15
+```
+
 # jest单元测试
 要使jest支持es module有两种方法：
 1. 使用babel
