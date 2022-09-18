@@ -77,8 +77,8 @@ plugins: [
 ```
 
 ## virtual dom and diff
-1. vNode
-返回一个描述真实dom的对象
+1. vnode
+返回一个描述真实dom的虚拟dom对象
 2. h
-递归调用vNode，并进行了函数重载
+根据参数调用vnode，并进行了函数重载
 
