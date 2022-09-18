@@ -32,6 +32,49 @@ module.exports = {
 }
 
 ```
+配置typescript环境
+1. 安装
+```shell
+npm install --save-dev typescript ts-loader
+```
+2. 开启source map
+会导致构建速度变慢，且使得生成的bundle.js体积过大，导致webpack warning
+tsconfig.json
+```json
+"sourceMap": true
+```
+webpack.config.js
+```js
+entry: './src/index.ts',
+// tell webpack to extract these source maps and include in our final bundle
+// https://webpack.js.org/configuration/devtool/
+devtool: 'inline-source-map',
+module: {
+  rules: [
+    {
+      test: /\.tsx?$/,
+      use: 'ts-loader',
+      exclude: /node_modules/,
+    },
+  ],
+},
+resolve: {
+  extensions: ['.tsx', '.ts', '.js'],
+},
+```
+3. 使用html-webpack-plugin在html中自动引入js
+webpack.config.js
+```js
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+// ...
+plugins: [
+    // 使用目标模板来生成最终 html
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+],
+```
 
 ## virtual dom and diff
 1. vNode

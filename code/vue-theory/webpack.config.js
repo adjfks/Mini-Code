@@ -1,13 +1,27 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   // 默认
   mode: 'production',
-  entry: './src/index.js',
+  entry: './src/index.ts',
+  // tell webpack to extract these source maps and include in our final bundle
+  // https://webpack.js.org/configuration/devtool/
+  // devtool: 'inline-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   output: {
-    // path: path.resolve(__dirname, 'dist'),
-    // 虚拟打包结果存放路径，不会真正生成文件夹，而是存放在内存中供dev-server使用
-    publicPath: '/dist',
+    path: path.resolve(__dirname, 'dist'),
     // 打包出来的文件名
     filename: 'bundle.js',
   },
@@ -18,4 +32,10 @@ module.exports = {
       directory: path.join(__dirname, 'public'),
     },
   },
+  plugins: [
+    // 使用目标模板来生成最终 html
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+  ],
 }
