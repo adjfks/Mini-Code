@@ -1,0 +1,17 @@
+{
+  "name": "vue-theory",
+  "version": "1.0.0",
+  "description": "学习手写vue相关原理的核心代码",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.0"
+  }
+}
