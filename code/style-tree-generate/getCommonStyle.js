@@ -1,5 +1,6 @@
 function getCommonStyle(root1, root2) {
-  if (root1.styles['display'] === 'none' || root2.styles['display'] === 'none') return null
+  if (root1.styles['display'] === 'none' || root2.styles['display'] === 'none')
+    return null
   const node = {
     sel: root1.sel,
     styles: {},
