@@ -2,12 +2,9 @@ function getCssTree(componentSetLibNode) {
   const cssTree = {
     selector: '.' + componentSetLibNode.name,
     styleBody: {},
-    children: []
+    children: [],
   }
   componentSetLibNode.propOtions.sort((a, b) => a.length - b.length)
-
 }
-
-
 
 module.exports = getStyle
