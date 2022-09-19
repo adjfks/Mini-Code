@@ -1,6 +1,10 @@
 function getCssTree(componentSetLibNode) {
+  const root = initCssTree(componentSetLibNode)
+}
+
+function initCssTree(componentSetLibNode) {
   const attrSelectors = getSelectors(componentSetLibNode.propOptions)
-  const root = {
+  return {
     selector: '.' + componentSetLibNode.name,
     styleBody: {},
     children: initChildren(attrSelectors, 0),
@@ -34,4 +38,9 @@ function getSelectors(propOptions) {
   return attrSelectors
 }
 
-module.exports = getCssTree
+module.exports = {
+  getCssTree,
+  initCssTree,
+  initChildren,
+  getSelectors,
+}

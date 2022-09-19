@@ -1,5 +1,5 @@
 const getCommonStyle = require('./getCommonStyle')
-const getCssTree = require('./index')
+const { getCssTree, initCssTree } = require('./index')
 const h = require('./h')
 
 const componentSetLibNode = {
@@ -161,6 +161,45 @@ const componentSetLibNode = {
   ],
 }
 
-const res = getCssTree(componentSetLibNode)
+const initTree = {
+  selector: '.xxx',
+  styleBody: {},
+  children: [
+    {
+      selector: '[type="primary"]',
+      styleBody: {},
+      children: [
+        {
+          selector: '[shape="standard"]',
+          styleBody: {},
+          children: [],
+        },
+        {
+          selector: '[shape="circle"]',
+          styleBody: {},
+          children: [],
+        },
+      ],
+    },
+    {
+      selector: '[type="secondary"]',
+      styleBody: {},
+      children: [
+        {
+          selector: '[shape="standard"]',
+          styleBody: {},
+          children: [],
+        },
+        {
+          selector: '[shape="circle"]',
+          styleBody: {},
+          children: [],
+        },
+      ],
+    },
+  ],
+}
 
-// test('组件样式生成', () => { })
+test('组件样式树初始化', () => {
+  expect(initCssTree(componentSetLibNode)).toEqual(initTree)
+})
