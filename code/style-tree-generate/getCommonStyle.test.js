@@ -78,7 +78,7 @@ const resTree = h(
 
 test('样式树提取公共部分算法', () => {
   const res = getCommonStyle(styleTree1, styleTree2)
-  console.log(res)
-  console.log(resTree)
+  // console.log(res)
+  // console.log(resTree)
   expect(res).toEqual(resTree)
 })
