@@ -14,7 +14,6 @@ if (no === undefined || no === null || no === NaN) {
   console.log('请输入leetcode题目标号')
   exit(1)
 }
-const titleNumber = parseInt(no)
 
 // 获取对应文件夹名字
 const dirs = fs.readdirSync(path.join(__dirname, './src'))
@@ -22,7 +21,7 @@ let target = ''
 for (let i = 0, len = dirs.length; i < len; i++) {
   const name = dirs[i]
   if (!isDir('./src/' + name)) continue
-  if (new RegExp(`^${titleNumber}`).test(name)) {
+  if (new RegExp(`^${no}`).test(name)) {
     target = name
     break
   }
