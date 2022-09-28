@@ -6,16 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+  </style>
 </head>
 
 <body>
   <!-- 待下载对 canvas 元素 -->
   <!-- 移动端可能会由于 viewport 的原因导致下载的图片不清晰，我们可以在 canvas 标签上直接设置 width 和 height 属性，不采用 style 中的 width 和 height, 相当于设置内部分辨率 -->
-  <canvas id="chart" width="1000" height="200"></canvas>
+  <!-- <canvas id="chart" width="1920" height="200"></canvas> -->
+  <div class="badge-container" style="display: none;">
+    <canvas id="badge-canvas" width="1920" height="2880"></canvas>
+    <img id="badge-bg" src="./images/Badge.png" alt="" crossOrigin="*">
+  </div>
+  <h3>生成结果</h3>
+  <img id="badge-img" width="420px" height="570px">
 
-  <!-- 触发下载操作的按钮 -->
+
+  <!-- 触发下载操作的按钮
   <button id="a-btn">a标签形式下载</button>
-  <button id="fs-btn">file-saver下载</button>
+  <button id="fs-btn">file-saver下载</button> -->
   <script src="main.js"></script>
 </body>
 
