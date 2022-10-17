@@ -12,7 +12,7 @@ const format = args.f || args.format || 'global'
 // 开发环境只打包某一个
 const pkg = require(resolve(__dirname, `../packages/${target}/package.json`))
 
-const outputFormat = format.startsWith('gloabal')
+const outputFormat = format.startsWith('global')
   ? 'iife'
   : format === 'cjs'
   ? 'cjs'
