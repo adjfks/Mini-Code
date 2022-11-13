@@ -33,3 +33,32 @@ export const calcImage = (canvas, img) => {
   }
   return { x, y, w, h }
 }
+// 获取canvas
+export const getCanvas = (width, height, selector = '') => {
+  let canvas
+  if (!selector) {
+    canvas = document.createElement('canvas')
+  } else {
+    canvas = document.querySelector(selector)
+  }
+  canvas.width = width
+  canvas.height = height
+  return canvas
+}
+
+// 居中绘制图片
+export const drawImageCentered = (canvas, img) => {
+  const ctx = canvas.getContext('2d')
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  const { x, y, w, h } = calcImage(canvas, img)
+  ctx.drawImage(img, x, y, w, h)
+  return { x, y, w, h }
+}
+
+// 获取填充满（canvas中某一部分）的canvas
+export const getFilledCanvas = (canvas, x, y, w, h) => {
+  const filledCanvas = getCanvas(w, h)
+  const ctx = filledCanvas.getContext('2d')
+  ctx.drawImage(canvas, x, y, w, h, 0, 0, w, h)
+  return filledCanvas
+}
