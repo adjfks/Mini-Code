@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Rotate, Crop And Blur</title>
+  <style>
+    .container {
+      display: inline-block;
+      width: 450px;
+      height: 200px;
+    }
+
+    canvas {
+      border: 2px solid #ccc;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Image Rotate, Crop And Blur</h1>
+  <div class="container" id="origin-container">
+    <h3>Origin</h3>
+    <canvas id="origin-canvas" class="canvas">
+      Sorry, your browser doesn't support canvas!
+    </canvas>
+  </div>
+  <div class="container" id="rotate-container">
+    <h3>
+      Rotate
+      <span>angle:</span>
+      <span class="angle-text"></span>
+      <span class="angle-input"></span>
+    </h3>
+    <canvas id="rotate-canvas" class="canvas">
+      Sorry, your browser doesn't support canvas!
+    </canvas>
+  </div>
+</body>
+
+</html>
