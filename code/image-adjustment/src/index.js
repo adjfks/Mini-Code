@@ -1,5 +1,5 @@
 import img1 from '../assets/1.jpg'
-import img2 from '../assets/1.jpg'
+import img2 from '../assets/2.jpg'
 import { calcImage, loadImg, getCanvas, drawImageCentered } from './util'
 import { rotateImage } from './rotate'
 // 获取容器宽高
@@ -37,5 +37,8 @@ loadImg(img2, (img) => {
     document.querySelector('.angle-text').innerHTML = angle
     const imageCanvas = rotateImage(img, angle)
     drawImageCentered(rCanvas, imageCanvas)
+    // const image = document.createElement('img')
+    // image.src = imageCanvas.toDataURL()
+    // document.querySelector('body').appendChild(image)
   })
 })

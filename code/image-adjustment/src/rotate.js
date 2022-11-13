@@ -41,15 +41,18 @@ export const rotateImage = (img, angle = 0) => {
     y = 0,
     w = canvasWidth,
     h = canvasHeight
-  if (angle === -90 || angle === 90 || angle === -270 || angle === 270) {
+  if (angle % 180 !== 0) {
     const temp = w
     w = h
     h = temp
-  }
-  if (angle === 180 || angle === -180) {
-    y = cSize - h
-  } else if (angle === 90 || angle === -270) {
+    if (angle === -90 || angle === 270) {
+      y = cSize - h
+    } else {
+      x = cSize - w
+    }
+  } else if (angle) {
     x = cSize - w
+    y = cSize - h
   }
 
   const canvas2 = getCanvas(w, h)
