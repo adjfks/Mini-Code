@@ -17,17 +17,35 @@
       border: 2px solid #ccc;
     }
 
+    #crop-container {
+      margin: 0 auto;
+      display: block;
+    }
+
+    #crop-container {
+      width: 960px;
+      height: 520px;
+    }
+
+    .operation {
+      display: block;
+    }
+
   </style>
 </head>
 
 <body>
   <h1>Image Rotate, Crop And Blur</h1>
+  <!-- Change Image Button -->
+  <div class="operation"></div>
+  <!-- Orign Image -->
   <div class="container" id="origin-container">
     <h3>Origin</h3>
     <canvas id="origin-canvas" class="canvas">
       Sorry, your browser doesn't support canvas!
     </canvas>
   </div>
+  <!-- Rotate Image -->
   <div class="container" id="rotate-container">
     <h3>
       Rotate
@@ -36,6 +54,13 @@
       <span class="angle-input"></span>
     </h3>
     <canvas id="rotate-canvas" class="canvas">
+      Sorry, your browser doesn't support canvas!
+    </canvas>
+  </div>
+  <!-- Crop Image -->
+  <div class="container" id="crop-container">
+    <h3>Crop</h3>
+    <canvas id="crop-canvas" class="canvas">
       Sorry, your browser doesn't support canvas!
     </canvas>
   </div>
