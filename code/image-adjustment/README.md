@@ -21,3 +21,24 @@ const canvas = getCanvas(200, 100, '.canvas')
 const imageCanvas = rotateImage(img, angle)
 drawImageCentered(rCanvas, imageCanvas)
 ```
+
+## Crop
+调用crop传入图片，目标canvas即可
+```js
+import { crop } from './crop'
+// 获取容器大小
+const { width, height } = document
+  .getElementById('crop-container')
+  .getBoundingClientRect();
+// 获取裁剪的canvas
+const cropCanvas = document.getElementById('crop-canvas');
+const cropObj = crop({
+  canvas: cropCanvas,
+  img,
+  width,
+  height,
+});
+
+// 通过cropObj.getData()获取裁剪图片的imageData数据和宽高
+const { imageData, width, height } = cropObj.getData();
+```
