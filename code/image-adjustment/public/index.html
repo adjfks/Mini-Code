@@ -7,67 +7,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Rotate, Crop And Blur</title>
   <style>
-    .container {
-      display: inline-block;
-      width: 450px;
-      height: 200px;
+    .canvas-container {
+      display: flex;
     }
-
-    canvas {
-      border: 2px solid #ccc;
+    .adjust-container {
+      flex: 1;
+      height: 600px;
     }
-
-    #crop-container {
-      margin: 0 auto;
-      display: block;
+    .preview-container {
+      flex: 1;
+      height: 600px;
     }
-
-    #crop-container {
-      width: 960px;
-      height: 520px;
-    }
-
-    .operation {
-      display: block;
-    }
-
   </style>
 </head>
 
 <body>
   <h1>Image Rotate, Crop And Blur</h1>
-  <!-- Change Image Button -->
-  <div class="operation"></div>
-  <!-- Orign Image -->
-  <div class="container" id="origin-container">
-    <h3>Origin</h3>
-    <canvas id="origin-canvas" class="canvas">
-      Sorry, your browser doesn't support canvas!
-    </canvas>
+  <button class="switch-image">switch image</button>
+  <div class="btn-container">
+    <button class="origin-btn">Origin</button>
+    <button class="rotate-btn">Rotate</button>
+    <button class="crop-btn">Crop</button>
   </div>
-  <!-- Rotate Image -->
-  <div class="container" id="rotate-container">
-    <h3>
-      Rotate
-      <span>angle:</span>
-      <span class="angle-text"></span>
-      <span class="angle-input"></span>
-    </h3>
-    <canvas id="rotate-canvas" class="canvas">
-      Sorry, your browser doesn't support canvas!
-    </canvas>
-  </div>
-  <!-- Crop Image -->
-  <div class="container" id="crop-container">
-    <h3>Crop<br/><button id="crop-btn">crop</button></h3>
-    <canvas id="crop-canvas" class="canvas">
-      Sorry, your browser doesn't support canvas!
-    </canvas>
-    <canvas id="crop-preview">
-      Sorry, your browser doesn't support canvas!
-    </canvas>
-  </div>
-
+  <div class="angle-input"></div>
+  <div class="angle-text"></div>
+  <main>
+    <h2 class="title">Origin</h2>
+    <div class="canvas-container">
+      <div class="adjust-container">
+        <canvas class="adjust-canvas">
+          Sorry, your browser doesn't support canvas!
+        </canvas>
+      </div>
+      <div class="preview-container">
+        <canvas class="preview-canvas">
+          Sorry, your browser doesn't support canvas!
+        </canvas>
+      </div>
+    </div>
+  </main>
+  <script>
+  </script>
 </body>
 
 </html>
