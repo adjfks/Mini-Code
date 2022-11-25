@@ -11,7 +11,7 @@ const BLUR = 'blur';
 const MOSAIC = 'mosaic';
 
 // 切换图片按钮
-const IMAGE_LIST = [img3, img1, img2];
+const IMAGE_LIST = [img1, img3, img2];
 let curIndex = 0;
 let IMAGE = IMAGE_LIST[curIndex];
 
@@ -122,7 +122,7 @@ bBtn.addEventListener('click', () => {
   const input = document.createElement('input')
   input.type = 'range'
   input.min = 1;
-  input.max = 20;
+  input.max = 120;
   input.step = 1;
   input.value = 1;
   document.querySelector('.input').innerHTML = '';
@@ -139,8 +139,16 @@ bBtn.addEventListener('click', () => {
   delBtn.addEventListener('click', () => {
     adjustCanvasExt.removeSeletedAnnotation();
   });
-  document.querySelector('.delete').innerHTML = '';
-  document.querySelector('.delete').appendChild(delBtn);
+  document.querySelector('.blur').innerHTML = '';
+  document.querySelector('.blur').appendChild(delBtn);
+
+  // adjust button
+  const adjustBtn = document.createElement('button');
+  adjustBtn.innerHTML = 'adjust';
+  adjustBtn.addEventListener('click', () => {
+    adjustCanvasExt.adjustAllAnnotation();
+  });
+  document.querySelector('.blur').appendChild(adjustBtn);
 
   adjustCanvasExt.switchOperation(BLUR, { radius: input.value });
 })

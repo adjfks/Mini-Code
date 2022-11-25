@@ -1,4 +1,4 @@
-import localBlur from './blur';
+import * as StackBlur from './stack-blur.js';
 
 const CROP = 'crop';
 const ROTATE = 'rotate';
@@ -108,7 +108,7 @@ export default class AdjustCanvasExt {
       this.imageLoading = false;
     } catch (err) {
       this.imageLoading = false;
-     console.log('Something went wrong.');
+      console.error('Something went wrong.');
     }
   }
 
@@ -399,13 +399,13 @@ export default class AdjustCanvasExt {
       const { x: ox, y: oy, w: ow, h: oh } = this._originImageRect;
       const widthRatio = width / ow;
       const heightRatio = height / oh;
-      x = (x - ox) * widthRatio;
-      y = (y - oy) * heightRatio;
-      w *= widthRatio;
-      h *= heightRatio;
-      radius *= widthRatio;
+      x = Math.floor((x - ox) * widthRatio);
+      y = Math.floor((y - oy) * heightRatio);
+      w = Math.floor(w * widthRatio);
+      h = Math.floor(h * heightRatio);
+      radius = Math.floor(radius * widthRatio);
       if (adjust && type === BLUR) {
-        canvas = localBlur(canvas, radius, [x, y, w, h]);
+        StackBlur.canvasRGBA(canvas, x, y, w, h, radius);
       } else if (adjust && type === MOSAIC) {
         canvas = this._localMosaic(canvas, radius, [x, y, w, h]);
       };
@@ -895,7 +895,7 @@ export default class AdjustCanvasExt {
           });
         }, 'image/jpeg', 1.0);
       } catch (e) {
-        console.log('Failed, something went wrong.');
+        console.error('Failed, something went wrong.');
         resolve();
       }
     })
