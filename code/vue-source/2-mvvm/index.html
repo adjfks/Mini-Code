@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="../vue.js"></script>
+  <script>
+    const vm = new Mvvm({
+      el: '#app',
+      data: {
+        name: 'Corner',
+        age: 22
+      },
+      template: `
+        <div>
+          <div>name: {{ name }}</div>
+          <div>age: {{ age }}</div>
+        </div>
+      `
+    })
+
+    function Mvvm(config) {
+      this.$el = config.el
+      this.$root = document.querySelector(config.el)
+      this.$data = observe(config.data)
+      // 用于将data中的属性代理到this实例上,使得可以通过this.xxx的方式访问数据
+      proxy.call(this, this.$data)
+      this.$template = config.template
+      new Watcher(() => {
+        console.log(this.name, this.age);
+        render.call(this)
+      })
+
+      function Dep() {
+        // 收集订阅者（依赖）的数组
+        this.subscribers = []
+        // 添加依赖的方法
+        this.addSub = function (sub) {
+          if (sub && this.subscribers.findIndex(item => item === sub) === -1) {
+            this.subscribers.push(sub)
+          }
+        }
+        // 通知所有依赖更新的方法
+        this.notifyAll = function () {
+          for (var i = 0; i < this.subscribers.length; i++) {
+            this.subscribers[i].update()
+          }
+        }
+      }
+
+      function observe(obj) {
+        for (let key in obj) {
+          // 每一个属性对应一个Dep实例
+          let dep = new Dep()
+          let value = obj[key]
+          if (Object.prototype.toString.call(value) === '[object Object]') {
+            observe(value)
+          }
+          Object.defineProperty(obj, key, {
+            configurable: true,
+            enumerable: true,
+            get: function () {
+              if (Dep.target) {
+                // 添加依赖
+                dep.addSub(Dep.target)
+              }
+              return value
+            },
+            set: function (newVal) {
+              if (newVal === value) return value
+              value = newVal
+              dep.notifyAll()
+            }
+          })
+        }
+        return obj
+      }
+
+      function Watcher(fn) {
+        // 更新函数
+        this.update = function () {
+          fn()
+        }
+        // 初始化watcher时要给相应数据添加依赖
+        Dep.target = this
+        fn()
+        Dep.target = null
+      }
+
+      function proxy(data) {
+        for (let key in data) {
+          Object.defineProperty(this, key, {
+            configurable: true,
+            enumerable: true,
+            get: function () {
+              return this.$data[key]
+            },
+            set: function (newVal) {
+              this.$data[key] = newVal
+            }
+          })
+        }
+      }
+
+      // 处理template并进行渲染
+      function render() {
+        var html = this.$template
+          .replace(/"/g, '\\"')
+          .replace(/\s+|\r|\t|\n/g, ' ')
+          .replace(/\{\{.*?\}\}/g, function (value) {
+            return value.replace('{{', '"+(').replace('}}', ')+"')
+          })
+        html = `var targetHtml = "${html}";return targetHtml;`
+        // 语法：new Function(...args, functionBody)
+        var parsedHtml = new Function(...Object.keys(this.$data), html)(...Object.values(this.$data))
+        this.$root.innerHTML = parsedHtml
+      }
+    }
+  </script>
+</body>
+
+</html>
