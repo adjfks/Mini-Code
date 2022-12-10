@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Vue'
+      },
+      template: `
+        <div>
+          <div ref="msgElement">{{msg}}</div>
+          <button @click="updateMsg">updateMsg</button>
+          <button @click="updateMsgTest">updateMsgTest</button>
+        </div>
+      `,
+      methods: {
+        // updateMsg: function () {
+        //   this.msg = 'Update'
+        //   console.log('更新前:', this.$refs.msgElement.innerHTML)
+        //   this.$nextTick(() => {
+        //     console.log('更新后:', this.$refs.msgElement.innerHTML)
+        //   })
+        // },
+        updateMsg: function () {
+          this.msg = "Update";
+          console.log('修改了数据~')
+          setTimeout(() => console.log(1))
+          Promise.resolve().then(() => console.log(2))
+          this.$nextTick(() => {
+            console.log(3)
+          })
+        },
+        updateMsgTest: function () {
+          console.log('未修改数据~');
+          setTimeout(() => console.log(1))
+          Promise.resolve().then(() => console.log(2))
+          this.$nextTick(() => {
+            console.log(3)
+          })
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
