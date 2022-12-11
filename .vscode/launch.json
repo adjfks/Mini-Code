@@ -8,7 +8,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "Open index.html",
-      "file": "d:\\CS\\Repositories-self\\mini-code\\code\\vue-source\\index.html"
+      "file": "d:\\CS\\Repositories-self\\mini-code\\code\\vue-source\\4-computed\\index.html"
     }
   ]
 }
