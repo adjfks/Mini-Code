@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>name: {{ name }}</div>
+    <div>age: {{ age }}</div>
+    <div>height: {{ height }}</div>
+    <button @click="ageInc">age+1</button>
+  </div>
+  <div id="watch-example"></div>
+  <script src="../vue.js"></script>
+  <script src="./mvvm.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        name: 'Corner',
+        age: 15,
+        height: 170
+      },
+      watch: {
+        age(newVal, oldVal) {
+          console.log('oldVal: ', oldVal);
+          console.log('newVal: ', newVal);
+          this.height += this.age;
+        }
+      },
+      methods: {
+        ageInc() {
+          this.age++;
+        }
+      }
+    })
+  </script>
+  <script>
+    // 在控制台修改$vm.age += 1
+    // 可以看到watch执行并打印了oldVal和newVal
+    const $vm = new Mvvm({
+      el: '#watch-example',
+      data: {
+        age: 15,
+        height: 170
+      },
+      watch: {
+        age(newVal, oldVal) {
+          console.log('oldVal: ', oldVal);
+          console.log('newVal: ', newVal);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
