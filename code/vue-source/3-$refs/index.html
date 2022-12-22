@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="../vue.js"></script>
+  <script>
+    const Comp = Vue.component('Comp', {
+      name: 'Comp',
+      data: function () {
+        return {
+          count: 1
+        }
+      },
+      template: `
+        <div>
+          <p ref="count">count: {{ count }}</p>
+          <button @click="increase">+1</button>
+        </div>
+      `,
+      methods: {
+        increase: function () {
+          this.count += 1
+          console.log('count: ', this.$refs.count.innerHTML);
+          this.$nextTick(() => {
+            console.log('count in nextTick: ', this.$refs.count.innerHTML);
+          })
+        }
+      }
+    })
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        name: 'Joke',
+        age: 18,
+        citys: [
+          'BeiJin',
+          'ShenZhen',
+          'ShangHai'
+        ]
+      },
+      template: `
+        <div>
+          <div ref="div">普通DOM元素div</div>
+          <Comp ref="comp"/>
+          <ul>
+            <li v-for="city in citys" id="city" ref="liArr">{{ city }}</li>
+          </ul>
+        </div>
+      `,
+      beforeMount: function () {
+        console.log('div', this.$refs.div);
+      },
+      mounted: function () {
+        console.log('div', this.$refs.div);
+        console.log('comp', this.$refs.comp);
+        console.log('liArr', this.$refs.liArr);
+      }
+    })
+  </script>
+</body>
+
+</html>
