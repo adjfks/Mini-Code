@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    /* 
+  使用new Function实现模板引擎功能
+  */
+    String.prototype.interpolate = function (data) {
+      const keys = Object.keys(data)
+      const values = Object.values(data)
+      return new Function(...keys, `return \`${this}\`;`)(...values)
+    }
+  </script>
+</head>
+
+<body>
+  <div class="template">
+    <p>name: ${name}</p>
+    <p>age: ${age}</p>
+  </div>
+  <script>
+    const template = document.querySelector('.template')
+    template.innerHTML = template.innerHTML.interpolate({
+      name: 'corner',
+      age: 22
+    })
+  </script>
+</body>
+
+</html>
