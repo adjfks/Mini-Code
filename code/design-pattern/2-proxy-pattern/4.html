@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用高阶函数动态创建缓存代理</title>
+</head>
+
+<body>
+  <script>
+    // 动态创建代理的函数
+    var createProxyFactory = function (fn) {
+      var cache = {}
+      return function () {
+        var args = [].slice.call(arguments).join(',')
+        if (args in cache) {
+          console.log('命中缓存: ', cache);
+          return cache[args]
+        } else {
+          console.log('缓存结果: ', cache);
+          return cache[args] = fn.apply(this, arguments)
+        }
+      }
+    }
+
+    // 加法操作
+    var plus = function () {
+      return [].slice.call(arguments).reduce((pre, cur) => pre + cur, 0)
+    }
+    // 乘法操作
+    var mult = function () {
+      return [].slice.call(arguments).reduce((pre, cur) => pre * cur, 1)
+    }
+
+    // 创建代理
+    var proxyPlus = createProxyFactory(plus)
+    var proxyMult = createProxyFactory(mult)
+
+    proxyPlus(1, 2)
+    proxyPlus(1, 2)
+
+    proxyMult(3, 9)
+    proxyMult(4, 5, 6)
+    proxyMult(3, 9)
+  </script>
+</body>
+
+</html>

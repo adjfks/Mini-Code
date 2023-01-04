@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>合并HTTP请求</title>
+</head>
+
+<body>
+  <ul>
+    <li><label><input type="checkbox">File 1</label></li>
+    <li><label><input type="checkbox">File 2</label></li>
+    <li><label><input type="checkbox">File 3</label></li>
+    <li><label><input type="checkbox">File 4</label></li>
+    <li><label><input type="checkbox">File 5</label></li>
+    <li><label><input type="checkbox">File 6</label></li>
+    <li><label><input type="checkbox">File 7</label></li>
+    <li><label><input type="checkbox">File 8</label></li>
+  </ul>
+
+  <script>
+    function synchronizeFile(target) {
+      console.log('正在发起请求同步：' + target)
+    }
+
+    var proxySynchronizeFile = (function () {
+      // cache用于暂存要同步的文件
+      var cache = []
+      var timer
+      return function (target) {
+        cache.push(target)
+        if (!timer) {
+          timer = setTimeout(function () {
+            synchronizeFile(cache.join(','))
+            clearTimeout(timer)
+            timer = null
+            cache.length = 0
+          }, 2000)
+        }
+      }
+    })()
+
+    function handler(useProxy = false) {
+      var fn = useProxy ? proxySynchronizeFile : synchronizeFile
+      return function (e) {
+        if (e.target.type === 'checkbox' && e.target.checked) {
+          fn(e.target.parentElement.innerText)
+        }
+      }
+    }
+
+    // 不使用代理
+    // var ul = document.querySelectorAll('ul')[0]
+    // ul.addEventListener('click', handler())
+
+    // 使用代理
+    var ul = document.querySelectorAll('ul')[0]
+    ul.addEventListener('click', handler(true))
+
+  </script>
+</body>
+
+</html>
