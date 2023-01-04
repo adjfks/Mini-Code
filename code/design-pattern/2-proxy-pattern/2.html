@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用虚拟代理实现图片预加载</title>
+</head>
+
+<body>
+  <script>
+    // 打开控制台，勾选disable cache禁用缓存 和 Network面板启用slow3G,效果更明显
+    var myImage = (function () {
+      var imageNode = document.createElement('img')
+      document.body.appendChild(imageNode)
+
+      return {
+        setSrc: function (src) {
+          imageNode.src = src
+        }
+      }
+    })()
+
+    var proxyImage = (function () {
+      var image = new Image()
+      image.onload = function () {
+        myImage.setSrc(image.src)
+      }
+
+      return {
+        setSrc: function (src) {
+          myImage.setSrc('./assets/loading.png')
+          image.src = src
+        }
+      }
+    })()
+
+    proxyImage.setSrc('https://images.pexels.com/photos/1382732/pexels-photo-1382732.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+  </script>
+</body>
+
+</html>
