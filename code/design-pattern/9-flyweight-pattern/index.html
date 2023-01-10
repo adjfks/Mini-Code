@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 传统上传实现 -->
+  <script src="./tradition.js"></script>
+  <script>
+    const files = [
+      {
+        fileName: '1.txt',
+        fileSize: 3000
+      },
+      {
+        fileName: '2.js',
+        fileSize: 1200
+      },
+      {
+        fileName: '3.txt',
+        fileSize: 2390
+      },
+      {
+        fileName: '4.html',
+        fileSize: 1287
+      },
+      {
+        fileName: '5.png',
+        fileSize: 5400
+      },
+      {
+        fileName: '6.txt',
+        fileSize: 300
+      },
+    ]
+
+    startUpload('plugin', files.slice(0, 3))
+    startUpload('flash', files.slice(3))
+  </script>
+</body>
+
+</html>
