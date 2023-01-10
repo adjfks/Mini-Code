@@ -5,6 +5,7 @@
 // 上传对象的构造函数
 var UploadObj = (function () {
   function UploadObj(uploadType, fileName, fileSize) {
+    console.log('创建对象');
     this.uploadType = uploadType || 'plugin'
     this.fileName = fileName
     this.fileSize = fileSize
