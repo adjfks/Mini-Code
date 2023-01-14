@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>遍历DOM树</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <section class="header">
+      <div class="logo"></div>
+    </section>
+    <section class="main">
+      <div class="sidebar">
+        <ul class="menu">
+          <li class='li'>
+            <a href="" id='demo'>li1-a</a>
+          </li>
+          <li class='li'>
+            <a href="">li2</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="footer">
+      <div class="copyright"></div>
+    </section>
+  </div>
+
+  <script>
+    // dfs
+    function traverseDomByDFS(node, callback) {
+      if (!node) return
+      callback(node)
+      const children = Array.from(node.children)
+      children.forEach((ch) => {
+        traverseDomByDFS(ch, callback)
+      })
+    }
+    // BFS
+    function traverseDomByBFS(node, callback) {
+      if (!node) return
+      let stack = [node]
+      while (stack.length) {
+        const cur = stack.shift()
+        const children = Array.from(cur.children)
+        if (children.length) stack.push(...children)
+        callback(cur)
+      }
+    }
+
+    const root = document.querySelector('.wrapper')
+    // traverseDomByDFS(root, (node) => {
+    //   console.log(node.outerHTML);
+    // })
+    traverseDomByBFS(root, (node) => {
+      console.log(node.outerHTML);
+    })
+  </script>
+</body>
+
+</html>
