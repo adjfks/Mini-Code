@@ -38,7 +38,11 @@ function quicksort(l, r, arr) {
 }
 ```
 
-时间复杂度：O(nlgn)
+时间复杂度：最好或平均：O(nlgn) 最坏情况：O(n^2)
+
+空间复杂度：O(lgn) 栈空间
+
+稳定性：不稳定
 
 ## 归并排序
 
@@ -72,4 +76,10 @@ function merge(arr1, arr2) {
   return res
 }
 ```
+
+时间复杂度：每一层都需要遍历原记录且树层数为lgn O(nlogn)
+
+空间复杂度：需要与原记录同样的存储空间n且需要lgn的递归栈空间 O(n + lgn)
+
+稳定性：稳定
 
