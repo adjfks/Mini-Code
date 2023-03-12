@@ -1,8 +1,10 @@
 <script setup>
   import { ref } from 'vue';
   const imgSrc = ref('');
+  const imgList = ref([]);
   const fileChange = (e) => {
     const fileList = e.target.files;
+    imgList.value.push(...fileList);
     const file = e.target.files[0];
     console.log('fileList: ', fileList);
     console.log('file: ', file);
@@ -32,7 +34,14 @@
 
   // submit
   const submit = (e) => {
-    
+    const fd = new FormData();
+    imgList.value.forEach(img => {
+      console.log('img: ', img);
+      fd.append(img.name, img)
+    })
+    for(let [k,v] of fd.entries()) {
+      console.log('[k,v]: ', [k,v]);
+    }
   }
 </script>
 
