@@ -9,3 +9,5 @@ swc是用rust写的，所实现的功能跟babel一样，es6语法转es5，但�
 esbuild 是一个快速的 JavaScript 和 TypeScript 构建工具
 
 @swc/helpers 是 swc 的辅助包，用于转换 JSX 代码。
+
+swc转换生成器 迭代器 和 装饰器 更优
