@@ -1,0 +1,17 @@
+{
+  "name": "esbuild-swc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./script.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@swc/core": "^1.3.41",
+    "@swc/helpers": "^0.4.14",
+    "esbuild": "^0.17.12"
+  }
+}
