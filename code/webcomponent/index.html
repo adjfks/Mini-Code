@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初见webcomponent</title>
+</head>
+
+<body>
+  <wu-jie name="Joke" age="14"></wu-jie>
+  <div>我是外层div</div>
+
+  <template id="wujie-template">
+    <style>
+      div {
+        background-color: skyblue;
+      }
+
+    </style>
+    <div>我是webcomponent中的div</div>
+  </template>
+  <script src="./index.js"></script>
+</body>
+
+</html>
