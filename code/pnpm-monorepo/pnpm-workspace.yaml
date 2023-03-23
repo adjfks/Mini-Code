@@ -3,3 +3,5 @@ packages:
   - 'main'
   # all packages in subdirs of components/
   - 'web/**'
+
+  - 'common'
