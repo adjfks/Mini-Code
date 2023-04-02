@@ -19,9 +19,11 @@ importers:
       vite: ^4.2.0
       vue: ^3.2.47
       vue-tsc: ^1.2.0
+      wujie-vue3: ^1.0.14
     dependencies:
       common: link:../common
       vue: 3.2.47
+      wujie-vue3: 1.0.14_vue@3.2.47
     devDependencies:
       '@vitejs/plugin-vue': 4.1.0_vite@4.2.1+vue@3.2.47
       typescript: 4.9.5
@@ -252,6 +254,13 @@ packages:
       '@babel/core': 7.21.3
       '@babel/helper-plugin-utils': 7.20.2
     dev: true
+
+  /@babel/runtime/7.21.0:
+    resolution: {integrity: sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.11
+    dev: false
 
   /@babel/template/7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==}
@@ -1017,6 +1026,10 @@ packages:
       loose-envify: 1.4.0
     dev: false
 
+  /regenerator-runtime/0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: false
+
   /resolve/1.22.1:
     resolution: {integrity: sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==}
     hasBin: true
@@ -1149,6 +1162,21 @@ packages:
       '@vue/runtime-dom': 3.2.47
       '@vue/server-renderer': 3.2.47_vue@3.2.47
       '@vue/shared': 3.2.47
+
+  /wujie-vue3/1.0.14_vue@3.2.47:
+    resolution: {integrity: sha512-iKD5IcFUTs1Ajc2IUG0nOmAOzzcPmORws6WC+xCyuKueo9WFE0wtfQxDRgPRdCyj7zKJv45Ypb5ksbJfr0uWDw==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.2.47
+      wujie: 1.0.14
+    dev: false
+
+  /wujie/1.0.14:
+    resolution: {integrity: sha512-KKDcqV0la7SL33A2VCV1noJfUXKVMyWfjEdspccG7VxB6CKqKM5PaCFXT1u4RsmPTC+e5jI3GPKsFqQqYGp/9w==}
+    dependencies:
+      '@babel/runtime': 7.21.0
+    dev: false
 
   /yallist/3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}

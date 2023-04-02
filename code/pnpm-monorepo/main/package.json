@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "common": "workspace:^1.0.0",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "wujie-vue3": "^1.0.14"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
