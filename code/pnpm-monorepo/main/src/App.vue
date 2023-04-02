@@ -12,6 +12,11 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <div>
+    <!-- 引入子应用 -->
+    <WujieVue name="vue3-demo" url="http://127.0.0.1:5174/"></WujieVue>
+    <WujieVue name="react-demo" url="http://127.0.0.1:5175/"></WujieVue>
+  </div>
 </template>
 
 <style scoped>
