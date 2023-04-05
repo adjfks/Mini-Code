@@ -1,7 +1,10 @@
+import appStyles from './App.module.css'
+
 function App() {
   return (
-    <div className="App">
+    <div className={appStyles.red}>
       App
+      <p className="green">I am green</p>
     </div>
   );
 }
