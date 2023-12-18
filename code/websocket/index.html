@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket</title>
+</head>
+
+<body>
+  <button onclick="sendMsg()">发消息</button>
+  <script>
+    const ws = new WebSocket('ws://localhost:8080')
+
+    ws.onopen = (e) => {
+      console.log('socket 连接已建立!')
+    }
+
+    ws.onmessage = (e) => {
+      console.log('收到消息：', e.data)
+    }
+
+    ws.onclose = (e) => {
+      console.log('WebSocket连接已断开！')
+    }
+
+    function sendMsg() {
+      ws.send('hello world!')
+    }
+
+  </script>
+</body>
+
+</html>
