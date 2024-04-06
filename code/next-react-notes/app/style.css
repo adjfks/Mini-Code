@@ -342,7 +342,7 @@ ul.notes-list {
 }
 .sidebar-note-header {
   z-index: 1;
-  max-width: 85%;
+  /* max-width: 85%; */
   pointer-events: none;
 }
 .sidebar-note-header > strong {
