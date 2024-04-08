@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Worker Cache</title>
+  <link rel="stylesheet" href="/static/index.css">
+</head>
+
+<body>
+  <h1>测试Service Worker缓存</h1>
+  <div class="image-gallery">
+    <img class="image" src="/static/img1.jpg" alt="" />
+    <img class="image" src="/static/img2.jpg" alt="" />
+    <img class="image" src="/static/img3.jpg" alt="" />
+    <img class="image" src="/static/img4.jpg" alt="" />
+    <img class="image" src="/static/img5.jpg" alt="" />
+  </div>
+  <script src="/static/index.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/static/sw-cache.js');
+    }
+  </script>
+</body>
+
+</html>
