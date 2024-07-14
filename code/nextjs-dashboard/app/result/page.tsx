@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import { Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 function Test() {
@@ -23,7 +23,9 @@ export default function Result() {
   return (
     <div>
       <div>result</div>
-      <Test />
+      <Suspense>
+        <Test />
+      </Suspense>
     </div>
   )
 }
