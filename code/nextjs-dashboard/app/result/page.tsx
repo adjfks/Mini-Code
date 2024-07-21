@@ -1,5 +1,5 @@
 'use client'
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 function Test() {
@@ -10,6 +10,11 @@ function Test() {
   console.log('name: ', name)
   const age = searchParams.get('age')
   console.log('age: ', age)
+
+  useEffect(() => {
+    const url = window.location.href
+    console.log('url: ', url)
+  }, [])
 
   return (
     <div>
